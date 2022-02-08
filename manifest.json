@@ -9,6 +9,13 @@
     "icons": {
       "48": "icons/beasts-48.png"
     },
+
+    "content_scripts": [
+      {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["studyTimer.js"]
+      }
+    ],
   
     "permissions": [
       "activeTab"
