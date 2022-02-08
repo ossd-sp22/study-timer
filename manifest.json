@@ -12,8 +12,7 @@
 
     "content_scripts": [
       {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["studyTimer.js"]
+      "matches": ["<all_urls>"]
       }
     ],
   
@@ -24,7 +23,7 @@
     "browser_action": {
       "default_icon": "icons/beasts-32.png",
       "default_title": "Beastify",
-      "default_popup": "popup/choose_beast.html"
+      "default_popup": "popup/studyTimer.html"
     },
   
     "web_accessible_resources": [
