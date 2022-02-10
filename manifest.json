@@ -24,13 +24,7 @@
       "default_icon": "icons/beasts-32.png",
       "default_title": "Beastify",
       "default_popup": "popup/studyTimer.html"
-    },
-  
-    "web_accessible_resources": [
-      "beasts/frog.jpg",
-      "beasts/turtle.jpg",
-      "beasts/snake.jpg"
-    ]
+    }
   
   }
   
