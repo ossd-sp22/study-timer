@@ -1,5 +1,18 @@
 let container = document.getElementById("timer");
 let debug = document.getElementById("debug");
+let startBtn = document.getElementById('start');
+let timeInput = document.getElementById('duration');
+
+// Update the count down every 1 second
+let duration;
+startBtn.addEventListener('click', () => {
+  // startBtn.style.display = none;
+  // timeInput.style.display = none;
+  time_string = document.getElementById('duration').value;
+  [h, m, s] = time_string.split(':');
+  duration = Number(h) *60 *60 + Number(m) * 60 + Number(s);
+  startTimer(duration, container);
+});
 
 function startTimer(duration, container) {
   var d = new Date().getTime();
@@ -15,7 +28,6 @@ function startTimer(duration, container) {
     var distance = countDownDate - now;
 
     // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
     var hours = Math.floor(
       (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
@@ -23,7 +35,7 @@ function startTimer(duration, container) {
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     container.innerHTML =
-      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      hours + "h " + minutes + "m " + seconds + "s ";
 
     if (distance < 0) {
       clearInterval(x);
