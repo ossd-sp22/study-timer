@@ -1,26 +1,33 @@
 let container = document.getElementById("timer");
 let debug = document.getElementById("debug");
 
-// Update the count down every 1 second
-var duration = 60 * 5;
-
 function startTimer(duration, container) {
-  var timer = duration,
-    minutes,
-    seconds;
+  var d = new Date().getTime();
+  var countDownDate = new Date(d + duration * 60000); // add duration minutes to cdt
+  if (!localStorage.getItem("countDownDate")) {
+    localStorage.setItem("countDownDate", countDownDate);
+  } else {
+    countDownDate = new Date(localStorage.getItem("countDownDate")).getTime();
+  }
+
   setInterval(function () {
-    minutes = parseInt(timer / 60, 10);
-    seconds = parseInt(timer % 60, 10);
+    var now = new Date().getTime();
+    var distance = countDownDate - now;
 
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    container.innerHTML = minutes + ":" + seconds;
+    container.innerHTML =
+      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-    if (--timer < 0) {
-      timer = duration;
+    if (distance < 0) {
+      clearInterval(x);
+      container.innerHTML = "EXPIRED";
     }
   }, 1000);
 }
-
-startTimer(duration, container);
