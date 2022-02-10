@@ -3,11 +3,11 @@ let debug = document.getElementById("debug");
 let startBtn = document.getElementById('start');
 let timeInput = document.getElementById('duration');
 
-// Update the count down every 1 second
 let duration;
+
 startBtn.addEventListener('click', () => {
-  // startBtn.style.display = none;
-  // timeInput.style.display = none;
+  startBtn.style.display = 'none';
+  timeInput.style.display = 'none';
   time_string = document.getElementById('duration').value;
   [h, m, s] = time_string.split(':');
   duration = Number(h) *60 *60 + Number(m) * 60 + Number(s);
@@ -40,6 +40,8 @@ function startTimer(duration, container) {
     if (distance < 0) {
       clearInterval(x);
       container.innerHTML = "EXPIRED";
+      startBtn.style.display = 'block';
+      timeInput.style.display = 'block';
     }
   }, 1000);
 }
