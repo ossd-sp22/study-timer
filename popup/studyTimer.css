@@ -1,11 +1,26 @@
 html,
 body {
+  position: relative;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0px;
   padding: 8px 0px;
   background: black;
   color: white;
   text-align: center;
+  min-width: 350px;
+  min-height: 200px;
+}
+
+#user-input {
+  margin: auto;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+#start {
+  margin: auto;
+  width: 80px;
+  height: 30px;
+  margin-top: 30px;
 }
 
 #debug {
@@ -17,12 +32,13 @@ body {
 }
 
 #timer {
-  width: 300px;
   z-index: 1000;
 }
 
 #controls {
-  margin: 20px;
+  position: absolute;
+  top: 70%;
+  left: 27%;
 }
 
 button {
