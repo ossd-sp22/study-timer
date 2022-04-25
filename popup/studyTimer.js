@@ -32,7 +32,25 @@ startBtn.addEventListener("click", () => {
     container.style.display = "block";
     controls.style.display = "block";
     localStorage.setItem("countDownDate", "none");
-    [h, m, s] = time_string.split(":");
+    var h;
+    var m;
+    var s;
+    let time_vars = time_string.split(":");
+    if (time_vars.length == 3) {
+      h = time_vars[0];
+      m = time_vars[1];
+      s = time_vars[2];
+    }
+    else if (time_vars.length == 2){
+      h = 0
+      m = time_vars[0]
+      s = time_vars[1];
+    }
+    else {
+      h = 0
+      m = 0
+      s = time_vars[0]
+    }
     duration = Number(h) * 60 * 60 + Number(m) * 60 + Number(s);
     clock = document.createElement("div");
     container.appendChild(clock);
