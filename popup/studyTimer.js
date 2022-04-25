@@ -8,6 +8,10 @@ let pause_btn = document.getElementById("pause");
 let reset_btn = document.getElementById("reset");
 var clock;
 var duration = 30;
+let title = document.querySelector("h3");
+let sound1 = document.getElementById("trumpet");
+let sound2 = document.getElementById("clock");
+let sound3 = document.getElementById("retro");
 
 if (
   !localStorage.getItem("started") ||
@@ -24,7 +28,44 @@ if (
   startTimer(Number(localStorage.getItem("duration")), clock);
 }
 
+function play_trumpet(){
+  var audio = new Audio("trumpet.wav");
+  audio.play();
+  setTimeout(() => {audio.pause();}, 5000);
+}
+
+function play_clock(){
+  var audio = new Audio("clock.wav");
+  audio.play();
+  setTimeout(() => {audio.pause();}, 5000);
+ 
+}
+
+function play_retro(){
+  var audio = new Audio("retro.wav");
+  audio.play();
+  setTimeout(() => {audio.pause();}, 5000);
+};
+
+sound1.addEventListener("click", () =>{
+  sound3.classList.remove("active");
+  sound2.classList.remove("active");
+  sound1.classList.add("active");
+});
+sound2.addEventListener("click", () =>{
+  sound1.classList.remove("active");
+  sound3.classList.remove("active");
+  sound2.classList.add("active");
+})
+sound3.addEventListener("click", () =>{
+  sound1.classList.remove("active");
+  sound2.classList.remove("active");
+  sound3.classList.add("active");
+})
+
 startBtn.addEventListener("click", () => {
+
+  title.innerHTML = "Study Timer";
   time_string = document.getElementById("duration").value;
   if (time_string && time_string.trim() != "") {
     startBtn.style.display = "none";
@@ -81,6 +122,16 @@ function startTimer(duration, clock) {
     clock.innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
 
     if (distance < 0) {
+      title.innerHTML = "TIMER DONE";
+      if (sound1.classList.contains("active")){
+        play_trumpet();
+      }
+      else if (sound2.classList.contains("active")){
+        play_clock();
+      }
+      else if (sound3.classList.contains("active")){
+        play_retro();
+      }
       clearInterval(x);
       localStorage.setItem("countDownDate", "none");
       container.removeChild(clock);

@@ -10,7 +10,7 @@ pause_btn.onclick = function () {
         Math.max(minutes, 0) * 60 +
         Math.max(seconds, 0)
     );
-    container.removeChild(clock);
+    //container.removeChild(clock);
     container.innerHTML = "Time paused";
     localStorage.setItem("countDownDate", "none");
     clearInterval(x);
