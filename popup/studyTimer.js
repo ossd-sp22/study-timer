@@ -126,11 +126,11 @@ function startTimer(duration, clock) {
       if (sound1.classList.contains("active")){
         play_trumpet();
       }
-      else if (sound2.classList.contains("active")){
-        play_clock();
-      }
       else if (sound3.classList.contains("active")){
         play_retro();
+      }
+      else {
+        play_clock();
       }
       clearInterval(x);
       localStorage.setItem("countDownDate", "none");
